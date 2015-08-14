@@ -69,7 +69,7 @@ class Deck < StackOfCards
   NAMES =  "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"
 
   def initialize
-    super # ramoves initialize duplication
+    super # removes initialize duplication
     SUITS.each do |s|
       NAMES.each.with_index do | name, index|
         index += 2 # Needed since index starts at 0 and card values start at 2.
