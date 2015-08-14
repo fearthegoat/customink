@@ -19,7 +19,7 @@ class Card
   end
 end
 
-# Class for creating other stacks when dealt/drawn from a Deck
+# Class for creating other stacks when cards are dealt from a Deck
 class StackOfCards
   attr_reader :cards
 
@@ -49,7 +49,12 @@ class StackOfCards
     @cards.inject(0) { |total, card| total + card.value }
   end
 
-  def draw_card(other_stack = StackOfCards.new, number_of_cards = 1)
+  def draw_card
+    card = @cards.shift
+    card
+  end
+
+  def deal_card_off_top(other_stack = StackOfCards.new, number_of_cards = 1)
     number_of_cards.times do
       card = @cards.shift
       other_stack.add_card(card)

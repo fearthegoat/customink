@@ -6,19 +6,19 @@ require_relative 'deck'
 class DeckTest < Minitest::Test
   def setup
     @a = Deck.new
-    @card = Card.new("Two", 2, "SPADES")
+    @card = Card.new("Ace", 11, "Spades")
   end
 
   def test_card_displays_value
-    assert_equal 2, @card.value
+    assert_equal 11, @card.value
   end
 
   def test_card_displays_suit
-    assert_equal "SPADES", @card.suit
+    assert_equal "Spades", @card.suit
   end
 
   def test_card_displays_name
-    assert_equal "Two", @card.name
+    assert_equal "Ace", @card.name
   end
 
   def test_generates_deck_of_52_cards
@@ -45,16 +45,9 @@ class DeckTest < Minitest::Test
   end
 
   def test_dealt_card_is_removed_from_deck_when_drawn
-    new_stack = StackOfCards.new
-    @a.draw_card(new_stack, 1)
-    drawn_card = new_stack.cards.first
-    assert_equal false, @a.cards.include?(drawn_card)
+    card = @a.draw_card
+    assert_equal false, @a.cards.include?(card)
   end
 
-  def test_deals_card_to_another_stack
-    new_stack = StackOfCards.new
-    @a.draw_card(new_stack, 1)
-    assert_equal 1, new_stack.cards.size
-  end
 
 end
